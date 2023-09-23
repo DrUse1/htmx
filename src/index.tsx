@@ -2,19 +2,23 @@ import { Elysia } from "elysia";
 import { html } from "@elysiajs/html";
 import Html from "@kitajs/html";
 
-const users = new Elysia({ prefix: "user" })
-  .use(html())
-  .decorate("Layout", ({ children }: Html.PropsWithChildren) => (
-    <BaseHTML>
-      <button>{children}</button>
-    </BaseHTML>
-  ))
-  .get("/", ({ Layout }) => <Layout>Root</Layout>)
-  .get("/sign-in", ({ Layout }) => <Layout>signIn</Layout>)
-  .get("/sign-up", ({ Layout }) => <Layout>signUp</Layout>)
-  .get("/profile", ({ Layout }) => <Layout>getProfile</Layout>);
+type Component = {
+  (props: Html.PropsWithChildren): string;
+};
 
-const app = new Elysia().use(html()).use(users).listen(8080);
+const users = (Layout: Component) => {
+  return new Elysia({ prefix: "user" })
+    .get("/", () => <Layout>Root</Layout>)
+    .get("/sign-in", () => <Layout>signIn</Layout>)
+    .get("/sign-up", () => <Layout>signUp</Layout>)
+    .get("/profile", () => <Layout>getProfile</Layout>);
+};
+
+const app = new Elysia()
+  .use(html())
+  .use(users(BaseHTML))
+  .get("/", () => <div>Hello</div>)
+  .listen(8080);
 
 console.log(
   `🦊 Elysia is running at http://${app.server?.hostname}:${app.server?.port}`
