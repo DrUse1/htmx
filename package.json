@@ -1,6 +1,7 @@
 {
   "name": "htmx",
-  "version": "1.0.50",
+  "module": "src/index.tsx",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --watch src/index.tsx"
@@ -12,9 +13,9 @@
     "elysia": "latest"
   },
   "devDependencies": {
+    "@flydotio/dockerfile": "latest",
     "bun-types": "latest"
   },
-  "module": "src/index.tsx",
   "prettier": {
     "bracketSameLine": true,
     "tabWidth": 2
