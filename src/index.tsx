@@ -3,12 +3,14 @@
 import { Elysia } from "elysia";
 import { html } from "@elysiajs/html";
 import Html from "@kitajs/html";
+import swagger from "@elysiajs/swagger";
 
 type Component = {
   (props: Html.PropsWithChildren): string;
 };
 
 const app = new Elysia()
+  .use(swagger())
   .use(html())
   .get("/", () => <BaseHTML>Hello</BaseHTML>)
   .listen(3000);
