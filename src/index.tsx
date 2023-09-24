@@ -1,3 +1,5 @@
+/// <reference types="@kitajs/html/htmx.d.ts" />
+
 import { Elysia } from "elysia";
 import { html } from "@elysiajs/html";
 import Html from "@kitajs/html";
@@ -6,18 +8,9 @@ type Component = {
   (props: Html.PropsWithChildren): string;
 };
 
-const users = (Layout: Component) => {
-  return new Elysia({ prefix: "user" })
-    .get("/", () => <Layout>Root</Layout>)
-    .get("/sign-in", () => <Layout>signIn</Layout>)
-    .get("/sign-up", () => <Layout>signUp</Layout>)
-    .get("/profile", () => <Layout>getProfile</Layout>);
-};
-
 const app = new Elysia()
   .use(html())
-  .use(users(BaseHTML))
-  .get("/", () => <div>Hello</div>)
+  .get("/", () => <BaseHTML>Hello</BaseHTML>)
   .listen(3000);
 
 console.log(
@@ -41,5 +34,3 @@ function BaseHTML({ children }: Html.PropsWithChildren) {
     </html>
   );
 }
-
-// test
