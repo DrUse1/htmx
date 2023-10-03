@@ -3,10 +3,12 @@
 import { Elysia } from "elysia";
 import { html } from "@elysiajs/html";
 import Html from "@kitajs/html";
+import staticPlugin from "@elysiajs/static";
 
 const app = new Elysia()
   .use(html())
-  .get("/", () => <BaseHTML>Hello World</BaseHTML>)
+  .use(staticPlugin())
+  .get("/", () => <BaseHTML>Hello World !</BaseHTML>)
   .listen(3000);
 
 console.log(
@@ -25,6 +27,7 @@ function BaseHTML({ children }: Html.PropsWithChildren) {
         />
         <script src="https://unpkg.com/hyperscript.org@0.9.11" />
         <script src="https://cdn.tailwindcss.com" />
+        <script src="/public/script.js"></script>
       </head>
       <body>{children}</body>
     </html>

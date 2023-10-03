@@ -4,15 +4,17 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.tsx",
+    "dev": "concurrently \"bun run --watch src/index.tsx\" \"bun build --watch ./src/public/* --outdir=public\"",
     "build": "bun build ./src/index.tsx --outfile=build/index.js",
     "preview": "bun run ./build/index.js"
   },
   "dependencies": {
     "@elysiajs/html": "^0.7.0",
+    "@elysiajs/static": "^0.7.1",
     "@elysiajs/swagger": "^0.7.2",
     "@kitajs/html": "^3.0.0",
     "@kitajs/ts-html-plugin": "^1.0.2",
+    "concurrently": "^8.2.1",
     "elysia": "latest"
   },
   "devDependencies": {
