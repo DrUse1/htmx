@@ -3,11 +3,9 @@
 import { Elysia } from "elysia";
 import { html } from "@elysiajs/html";
 import Html from "@kitajs/html";
-import staticPlugin from "@elysiajs/static";
 
 const app = new Elysia()
   .use(html())
-  .use(staticPlugin())
   .get("/", () => <BaseHTML>Hello World !</BaseHTML>)
   .listen(3000);
 

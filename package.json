@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"bun run --watch src/index.tsx\" \"bun build --watch ./src/public/* --outdir=public\"",
-    "build": "bun build ./src/index.tsx --outfile=build/index.js",
+    "build": "bun build ./src/index.tsx --outdir=build",
+    "serve": "bun run src/index.tsx",
     "preview": "bun run ./build/index.js"
   },
   "dependencies": {
