@@ -9,7 +9,6 @@ const app = new Elysia()
   .use(html())
   .use(staticPlugin())
   .get("/", () => <BaseHTML>Hello World !</BaseHTML>)
-  .get("/get", () => "omg")
   .listen(3000);
 
 console.log(
