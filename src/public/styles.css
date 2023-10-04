@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-family: avenir;
+  scroll-behavior: smooth;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+:root {
+  --text: #020303;
+  --background: #eef1f2;
+  --primary: #099dec;
+  --secondary: #bfeaf8;
+  --accent: #a1455c;
+}
+.dark {
+  --text: #fcfdfd;
+  --background: #0d1011;
+  --primary: #13a7f6;
+  --secondary: #073240;
+  --accent: #ba5e75;
+}
