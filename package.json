@@ -4,8 +4,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"bun run --watch src/index.tsx\" \"bun build --watch ./src/public/* --outdir=public\"",
-    "serve": "bun run src/index.tsx"
+    "dev": "concurrently \"bun run --watch src/index.tsx\" \"bun build --watch src/public/*.[jt]s --outdir=public\" \"bunx tailwindcss -i src/public/styles.css -o public/styles.css --watch\""
   },
   "dependencies": {
     "@elysiajs/html": "^0.7.0",
@@ -17,7 +16,8 @@
     "elysia": "latest"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "bun-types": "latest",
+    "tailwindcss": "^3.3.3"
   },
   "prettier": {
     "bracketSameLine": true,
